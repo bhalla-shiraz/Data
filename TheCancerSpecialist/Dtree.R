@@ -71,8 +71,6 @@ if(nrow(accuracy) == 1)acc = accuracy[1]/nrow(testData)else{
   overal <- confuse_mat$overall
   accuracy <- overal['Accuracy']
   acc <- as.double(accuracy)
-  
-  
 }
 all <- list(acc=acc)
 

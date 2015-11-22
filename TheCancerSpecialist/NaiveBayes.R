@@ -71,3 +71,4 @@ if(nrow(accuracy) == 1)acc = accuracy[1]/nrow(testData)else{
 }
 
 all <- list(acc=acc)
+
