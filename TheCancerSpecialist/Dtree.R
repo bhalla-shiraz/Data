@@ -1,16 +1,20 @@
-library(lattice)
-library(caret)
 #args <- commandArgs(TRUE)
 #dataURL<-as.character(args[1])
 #header<-as.logical(args[2])
 header <- F
-dataURL <- "C:/Users/tam/Desktop/cancerData.csv"
+dataURL <- "C:/Users/tam/Desktop/breastData.csv"
 d<-read.csv(dataURL,header = header)
+
+
+
+#set.seed(123)
+
+library(rpart)
+library(e1071)
 
 #c = as.integer(args[3])
 c = 2
-d[[c]] <- factor(d[[c]],labels = c(0,1))
-
+d[[c]] <- as.factor(d[[c]])
 
 for(i in 1:ncol(d)){
   a = sapply(d[[i]],is.factor)
@@ -42,17 +46,24 @@ for(i in 1:length(cnames)){
 }
 y
 
+str(trainingData)
+train_model <- rpart(y,data = trainingData, method = 'class', parms = list(split = 'information'), minsplit = 2, minbucket = 1)
+
+prediction <- predict(train_model, testData, type = "class")
+print(prediction)
 
 
-y <- as.formula(y)
-model1 <- glm(y, data = trainingData, family = "binomial")
-prediction <-predict(model1, testData)
-# use a threshold value and anything above that, you can assign to class=1 others to class=0
-threshold=0.35
-prediction<-sapply(prediction, FUN=function(x) if (x>threshold) 1 else 0)
+#prediction <- as.integer(prediction)
+#prediction <-sapply(prediction, FUN=function(x) if (x>0) 1 else 0)
+#print(prediction)
 
 accuracy <- table(prediction, testData[[c]])
 print(accuracy)
+
+library(lattice)
+library(ggplot2)
+library(caret)
+
 
 if(nrow(accuracy) == 1)acc = accuracy[1]/nrow(testData)else{
   #Accuracy given by confusionMatrix command
