@@ -1,5 +1,5 @@
 header <- F
-dataURL <- "C:/Users/Shonn/Desktop/data/data4.csv"
+dataURL <- "C:/Users/tam/Desktop/breastData.csv"
 d<-read.csv(dataURL,header = header)
 
 library(lattice)

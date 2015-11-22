@@ -13,6 +13,7 @@ public class RProcessor {
 		testAllClassifiers("neuralNet.R");
 		testAllClassifiers("RandomForest.R");
 		testAllClassifiers("SVMperceptron.R");
+		testAllClassifiers("svm.R");
 	}
 	public static void testAllClassifiers(String file)
 	{
