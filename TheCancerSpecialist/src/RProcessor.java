@@ -129,7 +129,7 @@ public class RProcessor {
   	      }
   	      
   	      
-  	      System.out.println("Get R");
+  	     // System.out.println("Get R");
   	    //Get the code from a R code file created
   	      code.R_source("svm3.R");
   	      
@@ -138,7 +138,7 @@ public class RProcessor {
   	      
   	      caller.runAndReturnResult("result");
   	      String[] results = caller.getParser().getAsStringArray("result");
-  	      System.out.println("Mean is " + results[0]);
+  	   //   System.out.println("Mean is " + results[0]);
   	      
   	      //TODO
   	      if(results[0].equals("B"))
@@ -167,7 +167,7 @@ public class RProcessor {
 			}
 		}
 		
-		System.out.println(maxAccAvg);
+		//System.out.println(maxAccAvg);
 		return clusterIndex;
 		
 	}
